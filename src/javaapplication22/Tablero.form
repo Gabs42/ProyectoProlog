@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="carta8" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="carta9" min="-2" max="-2" attributes="0"/>
+                          <Component id="palleteA" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="palleteB" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="carta10" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="carta11" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="start" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="carta12" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="carta13" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="carta14" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="canvasButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="palleteButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <Component id="carta1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="carta2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="carta3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                          <Component id="carta4" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="carta5" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="carta6" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="carta7" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="515" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="carta14" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="carta8" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="carta9" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="carta10" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="carta11" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="carta12" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="carta13" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="start" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="palleteB" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="palleteA" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="carta1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="carta2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="carta3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="carta4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="carta5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="carta6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="carta7" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="canvasButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="palleteButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="477" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="carta1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Carta1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="carta2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Carta1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="carta3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Carta1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="carta4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Carta1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="carta5">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Carta1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="carta6">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Carta1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="carta7">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Carta1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="carta8">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Carta1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="carta9">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Carta1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="carta10">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Carta1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="carta11">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Carta1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="carta12">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Carta1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="carta13">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Carta1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="carta14">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Carta1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="palleteA">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="palleteA"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="palleteB">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="palleteB"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="start">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Start"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="canvasButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Jugar Carta Seleccionada al canvas"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="palleteButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Jugar Carta Seleccionada al pallete"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>
