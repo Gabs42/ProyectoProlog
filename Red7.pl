@@ -25,6 +25,8 @@ priority(blue, 3).
 priority(indigo, 2).
 priority(violet, 1).
 
+%-------------------------------------------
+
 %Quita todos los elementos de la lista
 removeAll(_, [], []).
 removeAll(X, [X|T], L):-
@@ -38,6 +40,12 @@ removeAll(X, [H|T], [H|L]):-
 removeOne(A, [A|B], B).
 removeOne(A, [B, C|D], [B|E]) :-
     removeOne(A, [C|D], E).
+
+
+%Elimina una carta de la lista
+removeCard(A, X, [A, X|B], B).
+removeCard(A, X, [B, Y,C|D], [B,Y|E]) :-
+    removeCard(A, X, [C|D], E).
 
 
 %Metodo para conseguir el mayor entre dos numeros
@@ -68,9 +76,10 @@ maxC(A,B,C1,C2,X,C):-
     X is B, C is C2.
 
 %Metodo para conseguir la mayor carta de una lista
-maxCl([H],H).
-maxCl([H|T],M):-
-    maxCl(T,M1), maxC(M1,H,M).
+maxCl([H,X],H,X).
+maxCl([H,X|T],Num,Col):-
+    maxCl(T,Num1,Col1),
+    maxC(Num1,H,Col1,X,Num,Col).
 
 %--------------------------------
 
@@ -86,11 +95,11 @@ max_element_count(X,N,L) :-
 
 %Metodo para obtener la cantidad de cartas menores a 4
 below4([],0).
-below4([X|T],Y):-
+below4([X,C|T],Y):-
     X < 4,
     below4(T,Z),
     Y is 1+Z.
-below4([_|T],Z):-
+below4([_,_|T],Z):-
     below4(T,Z).
 
 %-------------------------------
@@ -98,7 +107,7 @@ below4([_|T],Z):-
 %Metodo para obtener la cantidad de cartas pares
 
 evenCount([], 0).
-evenCount([H|T],N):-
+evenCount([H,X|T],N):-
     H rem 2 =:=0,
     evenCount(T,M),
     N is M+1;
@@ -108,7 +117,7 @@ evenCount([H|T],N):-
 
 %Metodo para obtener el largo de una lista
 my_len([], 0).
-my_len([H|Lc], N) :-
+my_len([H,X|Lc], N) :-
     my_len(Lc, M),
     N is M+1.
 
@@ -117,19 +126,13 @@ my_len([H|Lc], N) :-
 %Metodo para
 
 
-deck([(1,red),(2,red),(3,red),(4,red),(5,red),(6,red),(7,red),
-      (1,orange),(2,orange),(3,orange),(4,orange),(5,orange),
-      (6,orange),(7,orange),
-      (1,yellow),(2,yellow),(3,yellow),(4,yellow),(5,yellow),
-      (6,yellow),(7,yellow),
-      (1,green),(2,green),(3,green),(4,green),(5,green),
-      (6,green),(7,green),
-      (1,blue),(2,blue),(3,blue),(4,blue),(5,blue),(6,blue),
-      (7,blue),
-      (1,indigo),(2,indigo),(3,indigo),(4,indigo),(5,indigo),
-      (6,indigo),(7,indigo),
-      (1,violet),(2,violet),(3,violet),(4,violet),(5,violet),
-      (6,violet),(7,violet)]).
+deck([1,7, 2,7, 3,7, 4,7, 5,7, 6,7, 7,7, %Red
+      1,6, 2,6, 3,6, 4,6, 5,6, 6,6, 7,6, %Orange
+      1,5, 2,5, 3,5, 4,5, 5,5, 6,5, 7,5, %Yellow
+      1,4, 2,4, 3,4, 4,4, 5,4, 6,4, 7,4, %Green
+      1,3, 2,3, 3,3, 4,3, 5,3, 6,3, 7,3, %Blue
+      1,2, 2,2, 3,2, 4,2, 5,2, 6,2, 7,2, %Indigo
+      1,1, 2,1, 3,1, 4,1, 5,1, 6,1, 7,1]). %Violet
 
 
 
@@ -137,25 +140,26 @@ deck([(1,red),(2,red),(3,red),(4,red),(5,red),(6,red),(7,red),
 %La cantidad a repartir es el ultimo parametro de dealer.
 dealer(_,_,_,0).
 
-dealer([C1,C2|Cards],[C1],[C2],N) :-
+dealer([X1,C1,X2,C2|Cards],[X1,C1],[X2,C2],N) :-
     N>0,
     N1 is N-1,
-    write("A: "), write(C1), nl,
-    write("B: "), write(C2), nl,
-    dealer(Cards,C1,C2,N1).
+    dealer(Cards,[X1,C1],[X2,C2],N1).
 
 
-dealer([C1,C2|Cards],[C1|H1],[C2|H2],N) :-
+dealer([X1,C1,X2,C2|Cards],[X1,C1|H1],[X2,C2|H2],N) :-
     N>0,
     N1 is N-1,
-    write("A: "), write(C1), nl,
-    write("B: "), write(C2), nl,
     dealer(Cards,H1,H2,N1).
 
 deal(_,A,B) :-
     deck(Deck),
     random_permutation(Deck, ShuffledDeck),
     dealer(ShuffledDeck,A,B,7).
+
+
+
+
+
 
 
 
