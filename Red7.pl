@@ -49,50 +49,74 @@ max(A,B,B) :-
 %Metodo para conseguir el mayor de una lista
 maxl([H],H).
 maxl([H|T],M):-
-    maxl(T,M1), max(M1,H,M).
+    maxl(T,M1),
+    max(M1,H,M).
 
 %---------------------------------
 
 %Metodo para conseguir la mayor carta
-maxC(A,B,C1,C2,A):-
-    A > B;
+maxC(A,B,C1,C2,X,C):-
+    A > B,
+    X is A, C is C1;
     A = B,
-    C1 > C2.
-maxC(A,B,C1,C2,B):-
-    A < B;
+    C1 > C2,
+    X is A, C is C1;
     A = B,
-    C1 < C2.
+    C1 < C2,
+    X is B, C is C2;
+    A < B,
+    X is B, C is C2.
 
-%Metodo para conseguir la mayor carta de dos lista
+%Metodo para conseguir la mayor carta de una lista
 maxCl([H],H).
 maxCl([H|T],M):-
     maxCl(T,M1), maxC(M1,H,M).
 
 %--------------------------------
 
-%Metodo para obtener el numero con mas repeticiones de una lista
-maxReps([H|T],A):-
-    maxRepsAux(H,[H|T],A).
+%Metodo para obtener el elemento con mas repeticiones de una lista
+element_count(X,N,L) :-
+    aggregate(count,member(X,L),N).
 
-maxRepsAux(A,[H|T],B):-
-    A = H,
-    B1 is B+1,
-    maxRepsAux(A,T,B1);
-    maxRepsAux(A,T,B).
+max_element_count(X,N,L) :-
+    aggregate(max(N1,X1),element_count(X1,N1,L),max(N,X)).
 
 
 %--------------------------------
 
 %Metodo para obtener la cantidad de cartas menores a 4
-below4([],_).
-below4([H|T],A):-
-    H < 4,
-    A1 is A+1,
-    write(A1),
-    below4(T, A1);
-    below4(T, A).
+below4([],0).
+below4([X|T],Y):-
+    X < 4,
+    below4(T,Z),
+    Y is 1+Z.
+below4([_|T],Z):-
+    below4(T,Z).
 
-%
+%-------------------------------
+
+%Metodo para obtener la cantidad de cartas pares
+
+evenCount([], 0).
+evenCount([H|T],N):-
+    H rem 2 =:=0,
+    evenCount(T,M),
+    N is M+1;
+    evenCount(T,N).
+
+%------------------------------
+
+%Metodo para obtener el largo de una lista
+my_len([], 0).
+my_len([H|Lc], N) :-
+    my_len(Lc, M),
+    N is M+1.
+
+%------------------------------
+
+%Metodo para
+
+
 deck([(1,red),(2,red),(3,red),(4,red),(5,red),(6,red),(7,red),
       (1,orange),(2,orange),(3,orange),(4,orange),(5,orange),
       (6,orange),(7,orange),
