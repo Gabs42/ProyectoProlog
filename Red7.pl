@@ -41,13 +41,6 @@ removeOne(A, [A|B], B).
 removeOne(A, [B, C|D], [B|E]) :-
     removeOne(A, [C|D], E).
 
-
-%Elimina una carta de la lista
-removeCard(A, X, [A, X|B], B).
-removeCard(A, X, [B, Y,C|D], [B,Y|E]) :-
-    removeCard(A, X, [C|D], E).
-
-
 %Metodo para conseguir el mayor entre dos numeros
 max(A,B,A) :-
     A >= B.
@@ -60,7 +53,21 @@ maxl([H|T],M):-
     maxl(T,M1),
     max(M1,H,M).
 
-%---------------------------------
+%Metodo para obtener el largo de una lista de cartas
+my_lenC([], 0).
+my_lenC([_,_|Lc], N) :-
+    my_lenC(Lc, M),
+    N is M+1.
+
+%Metodo para obtener el largo de una lista cualquiera
+my_len([], 0).
+my_len([_|Lc], N):-
+    my_len(Lc, M),
+    N is M+1.
+
+%-------------------------------
+
+%--------------------------------- Comienzan las reglas de las cartas
 
 %Metodo para conseguir la mayor carta
 maxC(A,B,C1,C2,X,C):-
@@ -76,6 +83,8 @@ maxC(A,B,C1,C2,X,C):-
     X is B, C is C2.
 
 %Metodo para conseguir la mayor carta de una lista
+%Recibe una lista de cartas, debe tener el formato numero, color.
+%Retorna en H el numero y en X el color de la carta mayor.
 maxCl([H,X],H,X).
 maxCl([H,X|T],Num,Col):-
     maxCl(T,Num1,Col1),
@@ -83,19 +92,80 @@ maxCl([H,X|T],Num,Col):-
 
 %--------------------------------
 
-%Metodo para obtener el elemento con mas repeticiones de una lista
-element_count(X,N,L) :-
-    aggregate(count,member(X,L),N).
+%Cuenta las apariciones de un numero
+% Recibe la lista y en X el numero, retorna en Y la cantidad de
+% apariciones
+count([],_,0).
+count([X|T],X,Y):-
+    count(T,X,Z),
+    Y is 1+Z.
+count([X1|T],X,Z):-
+    X1\=X,
+    count(T,X,Z).
 
-max_element_count(X,N,L) :-
-    aggregate(max(N1,X1),element_count(X1,N1,L),max(N,X)).
+%Obtiene el numero con mas repeticiones
+%Recibe una lista de solo numeros retorna en X el numero,
+%y R la cantidad de apariciones
+mostNum([],_,0).
+mostNum([X|T],_,R):-
+    count([X|T],X,Y),
+    Y > R,
+    mostNum(T,X,Y).
+mostNum([_,_|T],N,R):-
+    mostNum(T,N,R).
 
+%-------------------------------
+
+%Cuenta las apariciones de un color
+%Recibe una lista de colores, retorna en X el numero del color
+%y en Y la cantidad de apariciones.
+countColor([],_,0).
+countColor([X|T],X,Y):- countColor(T,X,Z), Y is 1+Z.
+countColor([X1|T],X,Z):- X1\=X,countColor(T,X,Z).
+
+
+mostCol([],0,0).
+mostCol([X,F|T],C,R):-
+    countColor([X,F|T],F,Y),
+    maxC(C,F,R,Y),
+    mostCol(T,F,Y).
+
+mostCol([_,_|T],N,R):-
+    mostCol(T,N,R).
 
 %--------------------------------
 
+%Metodo para obtener la cantidad de cartas pares
+% Recibe una lista de numeros sin colores,
+%retorna la cantidad de pares en N
+evenCount([], 0).
+evenCount([H|T],N):-
+    H rem 2 =:=0,
+    evenCount(T,M),
+    N is M+1;
+    evenCount(T,N).
+
+%------------------------------
+
+%Metodo para obtener la cantidad de colores distintos,
+%recibe la lista de colores solamente y en X retorna
+%la cantidad de colores
+difColors([],0).
+difColors(H,X):-
+    sort(H,L),
+    my_len(L,X).
+
+%------------------------------
+
+%Para conseguir la mayor cantidad de numeros consecutivos
+%Falta arreglar
+runCount().
+
+%-------------------------------
+
 %Metodo para obtener la cantidad de cartas menores a 4
 below4([],0).
-below4([X,C|T],Y):-
+below4([X,_|T],Y):-
     X < 4,
     below4(T,Z),
     Y is 1+Z.
@@ -104,26 +174,6 @@ below4([_,_|T],Z):-
 
 %-------------------------------
 
-%Metodo para obtener la cantidad de cartas pares
-
-evenCount([], 0).
-evenCount([H,X|T],N):-
-    H rem 2 =:=0,
-    evenCount(T,M),
-    N is M+1;
-    evenCount(T,N).
-
-%------------------------------
-
-%Metodo para obtener el largo de una lista
-my_len([], 0).
-my_len([H,X|Lc], N) :-
-    my_len(Lc, M),
-    N is M+1.
-
-%------------------------------
-
-%Metodo para
 
 
 deck([1,7, 2,7, 3,7, 4,7, 5,7, 6,7, 7,7, %Red
