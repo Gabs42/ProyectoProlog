@@ -1,3 +1,6 @@
+:- use_module(library(lists)).
+
+
 %Colores de las cartas
 color(red).
 color(orange).
@@ -104,15 +107,16 @@ count([X1|T],X,Z):-
     count(T,X,Z).
 
 %Obtiene el numero con mas repeticiones
-%Recibe una lista de solo numeros retorna en X el numero,
-%y R la cantidad de apariciones
-mostNum([],_,0).
-mostNum([X|T],_,R):-
-    count([X|T],X,Y),
-    Y > R,
-    mostNum(T,X,Y).
-mostNum([_,_|T],N,R):-
-    mostNum(T,N,R).
+% Recibe una lista de solo numeros y la misma lista aplicandole
+% sort, retorna en N el numero, y R la cantidad de apariciones
+% Ejemplo: L = [2,1,1,4,3,5]
+% sort(L, Y),
+% mostNum(L,Y,N,R).
+mostNum([],[],_,0).
+mostNum(X,[H|G],N,R):-
+    count(X,H,R),
+    N is H,
+    mostNum(X,G,N,R).
 
 %-------------------------------
 
@@ -159,7 +163,13 @@ difColors(H,X):-
 
 %Para conseguir la mayor cantidad de numeros consecutivos
 %Falta arreglar
-runCount().
+numRun([],_,0).
+numRun([H|T],H,R):-
+    numRun(T,H1,R1),
+    H is 1+H1,
+    R is 1+R1.
+numRun([H|T],_,_):-
+    numRun(T,H,1).
 
 %-------------------------------
 
@@ -205,6 +215,53 @@ deal(_,A,B) :-
     deck(Deck),
     random_permutation(Deck, ShuffledDeck),
     dealer(ShuffledDeck,A,B,7).
+
+
+
+
+
+%----------------------------------------
+
+
+
+countall(List,X,C) :-
+    sort(List,List1),
+    member(X,List1),
+    count(List,X,C).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
