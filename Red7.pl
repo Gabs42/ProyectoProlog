@@ -109,33 +109,36 @@ count([X1|T],X,Z):-
 %Obtiene el numero con mas repeticiones
 % Recibe una lista de solo numeros y la misma lista aplicandole
 % sort, retorna en N el numero, y R la cantidad de apariciones
-% Ejemplo: L = [2,1,1,4,3,5]
-% sort(L, Y),
-% mostNum(L,Y,N,R).
-mostNum([],[],_,0).
-mostNum([X|T],[H|G],N,R):-
-    count(X,H,R),
-    N is H,
-    mostNum([X|T],G,N,R).
+
+mostNum(H,X,R) :-
+    aggregate(max(R1,X1),mostNumAux(H,X1,R1),max(R,X)).
+
+mostNumAux(H,X,R) :-
+    aggregate(count,member(X,H),R).
+
+highRun(H,X,R) :-
+    aggregate(max(R1,X1),highRunAux(H,X1,R1),max(R,X)).
+
+highRunAux([],_,0).
+highRunAux([X|T],H,R) :-
+    write(H),
+    X =:= H+R,
+    highRunAux(T,H,R1),
+    R is R1+1;
+    highRunAux(T,H,R1).
+
 
 %-------------------------------
 
 %Cuenta las apariciones de un color
 %Recibe una lista de colores, retorna en X el numero del color
 %y en Y la cantidad de apariciones.
-countColor([],_,0).
-countColor([X|T],X,Y):- countColor(T,X,Z), Y is 1+Z.
-countColor([X1|T],X,Z):- X1\=X,countColor(T,X,Z).
 
+mostCol(H,X,R) :-
+    aggregate(max(R1,X1),mostColAux(H,X1,R1),max(R,X)).
 
-mostCol([],0,0).
-mostCol([X,F|T],C,R):-
-    countColor([X,F|T],F,Y),
-    maxC(C,F,R,Y),
-    mostCol(T,F,Y).
-
-mostCol([_,_|T],N,R):-
-    mostCol(T,N,R).
+mostColAux(H,X,R) :-
+    aggregate(count,member(X,H),R).
 
 %--------------------------------
 
@@ -163,13 +166,34 @@ difColors(H,X):-
 
 %Para conseguir la mayor cantidad de numeros consecutivos
 %Falta arreglar
+
+countx([],_,0).
+countx([X|T],X,Y):-
+    countx(T,W,Z),
+    X is 1+W,
+    Y is 1+Z.
+countx([X1|T],X,Z):-
+    X1\=X,
+    countx(T,X,Z).
+
 numRun([],_,0).
-numRun([H|T],H,R):-
-    numRun(T,H1,R1),
-    H is 1+H1,
-    R is 1+R1.
-numRun([H|T],_,_):-
-    numRun(T,H,1).
+numRun([H|T],X,Y) :-
+    member(X,[H|T]),
+    numRun(T,X1,Y1),
+    X is 1+X1,
+    Y is 1+Y1;
+    numRun([T],H,Y).
+
+
+xxxx([],_,0).
+xxxx([X|T],H,Y):-
+    X =:= H+Y,
+    xxxx(T,H,Z),
+    Y is 1+Z.
+xxxx([_,|T],H,Z):-
+    xxxx(T,H,Z).
+
+
 
 %-------------------------------
 
